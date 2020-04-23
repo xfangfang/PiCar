@@ -21,13 +21,19 @@
 # How to run the server
 
 sudo apt-get install pigpio python3-pigpio
+
 pip3 install cherrypy ws4py
+
 
 pigpiod
 
+
 cd /home/pi
+
 clone https://github.com/xfangfang/PiCar.git
+
 cd /home/pi/PiCar/server
+
 python3 server.py
 
 
@@ -35,11 +41,16 @@ python3 server.py
 # Run on boot
 
 sudo nano /etc/rc.local
+
 add line `sudo pigpiod` before `exit 0`
 
+
 cd /home/pi/PiCar/server
+
 sudo ln -s `pwd`/car.service /etc/systemd/system/car.service
+
 sudo systemctl enable car.service
+
 sudo systemctl start car.service
 
 
@@ -71,7 +82,7 @@ coming soon ...
 
 # Bugs
 
-- There is something wrong when a websocket client unexpectedly going down.
+- There is something wrong when a websocket client unexpectedly going down.(It truns other websocket clients to be unavailable for 10 seconds)
 
 
 
@@ -79,6 +90,7 @@ coming soon ...
 这两个使用了相同的实现思路，不过均为nodejs项目：
 
 https://github.com/pimterry/raspivid-stream
+
 https://github.com/131/h264-live-player
 
 关于 PiCamera 如何传输视频流：
@@ -88,5 +100,7 @@ https://picamera.readthedocs.io/en/release-1.13/api_camera.html#picamera.PiCamer
 关于cherrypy 与 ws4py：
 
 https://docs.cherrypy.org/en/latest/advanced.html#websocket-support
+
 https://github.com/Lawouach/WebSocket-for-Python/blob/961c07ce16ce4eedc34ca1fdacd29442870feccc/ws4py/server/cherrypyserver.py#L286
+
 https://github.com/Lawouach/WebSocket-for-Python/blob/961c07ce16ce4eedc34ca1fdacd29442870feccc/ws4py/manager.py#L196
