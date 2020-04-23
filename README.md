@@ -53,6 +53,11 @@ sudo systemctl enable car.service
 
 sudo systemctl start car.service
 
+# How to use
+
+访问 http://your-raspberry-pi-ip:6082 可以查看实时视频画面。
+
+舵机和电机操作文档与移动客户端代码 coming soon...
 
 
 # Server code organization
