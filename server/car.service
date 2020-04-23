@@ -1,0 +1,19 @@
+[UNIT]
+
+#服务描述
+Description=remote car
+
+After=network.target
+
+[Service]
+
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/PiCar/server
+Restart=on-failure
+RestartSec=5s
+ExecStart=/usr/bin/python3 server.py
+PrivateTmp=True
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <title>Remote Car</title>
+    <style type="text/css">
+		body {
+/* 			text-align: center; */
+            margin: 0;
+            width: 100%;
+            height: 100%;
+		}
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+/* 		#videoCanvas {
+			width: ${WIDTH}px;
+			height: ${HEIGHT}px;
+		} */
+	</style>
+  </head>
+  <body>
+  <!-- provide WSAvcPlayer -->
+    <script type="text/javascript" src="js/http-live-player.js">;</script>
+    <script type="text/javascript">
+
+        var canvas = document.createElement("canvas");
+        document.body.appendChild(canvas);
+
+        // Create h264 player
+        var uri = "ws://" + document.location.host + "/ws";
+        var wsavc = new WSAvcPlayer(canvas, "YUVWebGLCanvas", 1, 35);
+        wsavc.connect(uri);
+
+
+        //expose instance for button callbacks
+        
+//         wsavc.playStream()
+
+    </script>
+  </body>
+</html>
