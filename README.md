@@ -57,7 +57,7 @@ sudo systemctl start car.service
 
 访问 http://your-raspberry-pi-ip:6082 可以查看实时视频画面。
 
-舵机和电机操作文档与移动客户端代码 coming soon...
+使用client构建的客户端代码即可在ios或android设备上使用
 
 
 # Server code organization
@@ -67,22 +67,13 @@ sudo systemctl start car.service
 | var.py                            | 可以调整gpio引脚、视频的样式和帧数等内容                     |
 | server.py                         | cherrypy（python的一个http服务端）的启动代码                 |
 | plugins.py                        | 将自定义的服务（舵机、电机和摄像头）发布在cherrypy上，这样就可以优雅地通过websocket与硬件交互（发布订阅模式） |
-| servo.py    motor.py    camera.py | 分别代表：舵机、电机和摄像头（与底层硬件交互，通过修改这三个文件可以讲本程序移植到其他非树莓派设备上） |
-
-
-
-# Client code organization
-
-coming soon ...
+| servo.py    motor.py    camera.py | 分别代表：舵机、电机和摄像头（与底层硬件交互，通过修改这三个文件可以将本程序移植到其他非树莓派设备上） |
 
 
 
 # Best practices
 
 Using frp for internet connection.
-
-coming soon ...
-
 
 
 # Bugs
