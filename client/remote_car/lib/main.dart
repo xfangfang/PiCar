@@ -144,33 +144,9 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void refreshWebview() {
-    // print(window.physicalSize.height);
-    // print(window.devicePixelRatio);
     if (_controller != null) {
       _controller.reload();
     }
-  }
-
-  Future<bool> showDeleteConfirmDialog1() {
-    return showDialog<bool>(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text("提示"),
-          content: Text("收到ws服务器发来的消息"),
-          actions: <Widget>[
-            FlatButton(
-              child: Text("取消"),
-              onPressed: () => Navigator.of(context).pop(),
-            ),
-            FlatButton(
-              child: Text("确定"),
-              onPressed: () => Navigator.of(context).pop(true),
-            ),
-          ],
-        );
-      },
-    );
   }
 
   @override
@@ -181,55 +157,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void updateDelay() {
     var difference = DateTime.now().millisecondsSinceEpoch - sendTime;
-    // return Text(snapshot.hasData ? '延时 $difference ms' : '');
-
     setState(() {
       delay = '延迟' + '$difference' + 'ms';
     });
-  }
-
-  void _up(tapDown) {
-    if (downClick) return;
-    if (tapDown) {
-      send('up-down');
-      upClick = true;
-    } else {
-      send('up-up');
-      upClick = false;
-    }
-  }
-
-  void _down(tapDown) {
-    if (upClick) return;
-    if (tapDown) {
-      send('down-down');
-      downClick = true;
-    } else {
-      send('down-up');
-      downClick = false;
-    }
-  }
-
-  void _left(tapDown) {
-    if (rightClick) return;
-    if (tapDown) {
-      send('left-down');
-      leftClick = true;
-    } else {
-      send('left-up');
-      leftClick = false;
-    }
-  }
-
-  void _right(tapDown) {
-    if (leftClick) return;
-    if (tapDown) {
-      send('right-down');
-      rightClick = true;
-    } else {
-      send('right-up');
-      rightClick = false;
-    }
   }
 
   void _servoUpdateListener(double a, double b) {
@@ -313,72 +243,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   outterRadius: minWidth / 4,
                   autoback: false,
                 )),
-            // direction buttons
-            // Positioned(
-            //   right: 0,
-            //   child: Column(
-            //     mainAxisAlignment: MainAxisAlignment.center,
-            //     children: <Widget>[
-
-            //       Column(mainAxisAlignment: MainAxisAlignment.center,
-            //       children: <Widget>[
-            //           Padding(
-            //               padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-            //               child: RaisedButton(
-            //                 onPressed: () {},
-            //                 onHighlightChanged: _up,
-            //                 child: Container(
-            //                   height: 80,
-            //                   width: 20,
-            //                   alignment: Alignment.center,
-            //                   child: Text('上'),
-            //                 ),
-            //               )),
-            //           Row(
-            //             mainAxisAlignment: MainAxisAlignment.center,
-            //             children: <Widget>[
-            //               Padding(
-            //                   padding:
-            //                       const EdgeInsets.fromLTRB(10.0, 10.0, 30.0, 10.0),
-            //                   child: RaisedButton(
-            //                     onPressed: () {},
-            //                     onHighlightChanged: _left,
-            //                     child: Container(
-            //                       height: 80,
-            //                       width: 20,
-            //                       alignment: Alignment.center,
-            //                       child: Text('左'),
-            //                     ),
-            //                   )),
-            //               Padding(
-            //                   padding:
-            //                       const EdgeInsets.fromLTRB(30.0, 10.0, 10.0, 10.0),
-            //                   child: RaisedButton(
-            //                     onPressed: () {},
-            //                     onHighlightChanged: _right,
-            //                     child: Container(
-            //                       height: 80,
-            //                       width: 20,
-            //                       alignment: Alignment.center,
-            //                       child: Text('右'),
-            //                     ),
-            //                   )),
-            //             ],
-            //           ),
-            //           Padding(
-            //             padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-            //             child: RaisedButton(
-            //               onPressed: () {},
-            //               onHighlightChanged: _down,
-            //               child: Container(
-            //                 height: 80,
-            //                 width: 20,
-            //                 alignment: Alignment.center,
-            //                 child: Text('下'),
-            //               ),
-            //             )),
-            //         ]),],),
-            // )
           ]),
         ));
   }
